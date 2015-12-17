@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Disable Navigator Scaled Image Interpolation</title>
+	<script type="text/javascript" src="nosmoothing.js"></script>
+	<style type="text/css">
+		img {
+			padding: 20px;
+		}
+		.original, .scaled {
+			border: 1px solid dodgerblue; 
+		}
+		.scaled-nosmooth {
+			border: 1px solid limegreen;
+		}
+		table {
+			width: 100%;
+		}
+	</style>
+</head>
+<body data-nosmoothing="watch">
+	<table>
+		<thead>
+			<tr>
+				<th>Original Image</th>
+				<th>Scaled Normal</th>
+				<th>Scaled w/out smoothing</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><img id="sample-4x4" class="original" src="samples/sample-4x4.bmp"></td>
+				<td><img data-nosmoothing="false" id="sample-4x4" class="scaled" src="samples/sample-4x4.bmp" width="18px"></td>
+				<td><img id="sample-4x4" class="scaled-nosmooth" src="samples/sample-4x4.bmp" width="18px"></td>
+			</tr>
+			<tr>
+				<td><img id="sample-5x7" class="original" src="samples/sample-5x7.bmp"></td>
+				<td><img data-nosmoothing="false" id="sample-5x7" class="scaled" src="samples/sample-5x7.bmp" width="108px"></td>
+				<td><img id="sample-5x7" class="scaled-nosmooth" src="samples/sample-5x7.bmp" width="108px"></td>
+			</tr>
+			<tr>
+				<td><img id="sample-6x3" class="original" src="samples/sample-6x3.bmp"></td>
+				<td><img data-nosmoothing="false" id="sample-6x3" class="scaled" src="samples/sample-6x3.bmp" width="48px"></td>
+				<td><img id="sample-6x3" class="scaled-nosmooth" src="samples/sample-6x3.bmp" width="48px"></td>
+			</tr>
+			<tr>
+				<td><img id="sample-7x4" class="original" src="samples/sample-7x4.bmp"></td>
+				<td><img data-nosmoothing="false" id="sample-7x4" class="scaled" src="samples/sample-7x4.bmp" width="38px"></td>
+				<td><img id="sample-7x4" class="scaled-nosmooth" src="samples/sample-7x4.bmp" width="38px"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>A new image will be inserted dynamically in 2 seconds</p>
+
+	<script type="text/javascript">
+		// Here we emulate a new image being inserted into the DOM
+		(function () {
+			setTimeout(function(){
+				var inserted_image = new Image();
+				inserted_image.src = 'samples/sample-4x4.bmp';
+				inserted_image.width = 100;
+				inserted_image.width = 200;
+				document.body.appendChild(inserted_image);
+			}, 2000);
+		})();
+	</script>
+</body>
+</html>
